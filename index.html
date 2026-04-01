@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innowave Tech</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  background: linear-gradient(135deg,#0a0a0a,#001f2f);
+  color:white;
+}
+
+/* NAV */
+nav {
+  display:flex;
+  justify-content:space-between;
+  padding:20px;
+  background:#111;
+}
+nav h1 { color:#00c3ff; }
+
+/* HERO */
+.hero {
+  text-align:center;
+  padding:80px 20px;
+}
+.btn {
+  background:#00c3ff;
+  color:black;
+  padding:12px 25px;
+  border-radius:30px;
+  text-decoration:none;
+  display:inline-block;
+  margin-top:20px;
+  font-weight:bold;
+}
+
+/* SECTIONS */
+section {
+  padding:40px 20px;
+  text-align:center;
+}
+
+/* CARDS */
+.card {
+  background: rgba(255,255,255,0.05);
+  margin:15px;
+  padding:20px;
+  border-radius:15px;
+  backdrop-filter: blur(10px);
+}
+
+/* INPUT */
+input {
+  padding:10px;
+  width:80%;
+  border:none;
+  border-radius:5px;
+}
+
+/* BUTTON */
+button {
+  padding:10px 20px;
+  background:#00c3ff;
+  border:none;
+  border-radius:5px;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+/* CHAT */
+.chatbox {
+  margin-top:20px;
+  padding:15px;
+  background:#111;
+  border-radius:10px;
+  min-height:50px;
+}
+
+/* FLOAT WHATSAPP */
+.whatsapp {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:15px;
+  border-radius:50%;
+  font-size:20px;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h1>Innowave</h1>
+</nav>
+
+<div class="hero">
+<h1>We Build Smart AI Solutions 🚀</h1>
+<p>Websites • AI Tools • Cybersecurity</p>
+
+<a href="#ai" class="btn">Get Started</a>
+
+<br><br>
+
+<a href="https://wa.me/260962338363" class="btn" style="background:#25D366; color:white;">
+Chat on WhatsApp
+</a>
+</div>
+
+<!-- SERVICES -->
+<section>
+<h2>Our Services</h2>
+
+<div class="card">
+<h3>🤖 AI Tools</h3>
+<p>Chatbots, automation & smart systems</p>
+</div>
+
+<div class="card">
+<h3>🌐 Website Development</h3>
+<p>Modern, fast and responsive websites</p>
+</div>
+
+<div class="card">
+<h3>🔐 Cyber Security</h3>
+<p>Protect your business and data</p>
+</div>
+
+</section>
+
+<!-- AI SECTION -->
+<section id="ai">
+<h2>💬 AI Assistant</h2>
+
+<input id="userInput" placeholder="Ask something...">
+<br>
+<button onclick="askAI()">Send</button>
+
+<div id="response" class="chatbox">AI will respond here...</div>
+</section>
+
+<!-- CYBER SECURITY -->
+<section>
+<h2>🔐 Cyber Security Tools</h2>
+
+<div class="card">
+<h3>Password Strength Checker</h3>
+<input id="password" placeholder="Enter password">
+<br>
+<button onclick="checkPassword()">Check</button>
+<p id="strength"></p>
+</div>
+
+<div class="card">
+<h3>Security Tips</h3>
+<p>✔ Use strong passwords</p>
+<p>✔ Enable 2FA</p>
+<p>✔ Never share private data</p>
+</div>
+
+</section>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/260962338363" class="whatsapp">💬</a>
+
+<!-- SCRIPT -->
+<script>
+function askAI() {
+  let input = document.getElementById("userInput").value.toLowerCase();
+  let response = "I am your AI assistant 🤖";
+
+  if(input.includes("website")) {
+    response = "We can build you a modern website 🚀";
+  } 
+  else if(input.includes("money")) {
+    response = "You can make money with AI, websites, and freelancing 💰";
+  } 
+  else if(input.includes("security")) {
+    response = "Cybersecurity protects your data from hackers 🔐";
+  } 
+  else if(input.includes("hello")) {
+    response = "Hello! How can I help you today?";
+  }
+  else if(input.includes("services")) {
+    response = "We offer AI tools, website development, and cybersecurity 🔥";
+  }
+
+  document.getElementById("response").innerText = response;
+}
+
+function checkPassword() {
+  let pass = document.getElementById("password").value;
+  let strength = "Weak ❌";
+
+  if(pass.length > 8) strength = "Medium ⚠️";
+  if(pass.match(/[A-Z]/) && pass.match(/[0-9]/) && pass.length > 10) {
+    strength = "Strong ✅";
+  }
+
+  document.getElementById("strength").innerText = strength;
+}
+</script>
+
+</body>
+</html>
