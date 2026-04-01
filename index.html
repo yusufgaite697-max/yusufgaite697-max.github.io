@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innowave Tech</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    overflow-x: hidden;
+    background: linear-gradient(-45deg, #000, #001f3f, #000, #0a0a0a);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+}
+
+@keyframes gradient {
+    0% {background-position: 0%;}
+    50% {background-position: 100%;}
+    100% {background-position: 0%;}
+}
+
+/* NAV */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: rgba(0,0,0,0.7);
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+}
+
+nav h1 {
+    color: #00c3ff;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 120px 20px;
+}
+
+.hero h2 {
+    font-size: 45px;
+}
+
+.typing {
+    color: #00c3ff;
+    border-right: 2px solid #00c3ff;
+    padding-right: 5px;
+}
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background: #00c3ff;
+    color: black;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #00c3ff;
+}
+
+/* SECTIONS */
+section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+/* SERVICES */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px #00c3ff;
+}
+
+/* WHATSAPP BUTTON */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: black;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h1>Innowave</h1>
+    <div>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<section class="hero" id="home">
+    <h2>We Build <span class="typing" id="typing"></span></h2>
+    <p>Helping businesses worldwide grow with technology.</p>
+    <a href="#contact" class="btn">Get Started</a>
+</section>
+
+<section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+        <div class="card">
+            <h3>🌐 Websites</h3>
+            <p>Modern, fast and responsive websites.</p>
+        </div>
+        <div class="card">
+            <h3>📱 Apps</h3>
+            <p>Powerful mobile & web applications.</p>
+        </div>
+        <div class="card">
+            <h3>🎨 Design</h3>
+            <p>Clean UI/UX that users love.</p>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <h2>About Us</h2>
+    <p>We create next-generation digital solutions for the world.</p>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <p>Email: innowavetech@gmail.com</p>
+    <p>WhatsApp: +260XXXXXXXXX</p>
+</section>
+
+<footer>
+    <p>© 2026 Innowave Tech</p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/260XXXXXXXXX" class="whatsapp">💬</a>
+
+<script>
+// TYPING EFFECT
+const words = ["Websites", "Apps", "Solutions", "Your Future"];
+let i = 0;
+let j = 0;
+let current = "";
+let isDeleting = false;
+
+function type() {
+    current = words[i];
+    document.getElementById("typing").textContent = current.substring(0, j);
+
+    if (!isDeleting && j < current.length) {
+        j++;
+    } else if (isDeleting && j > 0) {
+        j--;
+    } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) i = (i + 1) % words.length;
+    }
+
+    setTimeout(type, isDeleting ? 50 : 100);
+}
+
+type();
+</script>
+
+</body>
+</html>
