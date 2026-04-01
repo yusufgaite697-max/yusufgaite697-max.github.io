@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innowave AI</title>
+
+<style>
+body {
+  margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(180deg,#000,#020d1a);
+  color:white;
+}
+
+/* NAV */
+nav {
+  display:flex;
+  justify-content:space-between;
+  padding:20px;
+  backdrop-filter: blur(20px);
+  position:sticky;
+  top:0;
+}
+
+nav h1 { color:#00c3ff; }
+
+/* HERO */
+.hero {
+  text-align:center;
+  padding:120px 20px;
+}
+
+.hero h2 {
+  font-size:42px;
+}
+
+/* BUTTON */
+.btn {
+  background:#00c3ff;
+  color:black;
+  padding:12px 25px;
+  border-radius:10px;
+  text-decoration:none;
+  display:inline-block;
+  margin-top:20px;
+  box-shadow:0 0 20px #00c3ff;
+}
+
+/* SECTIONS */
+section {
+  padding:60px 20px;
+  text-align:center;
+}
+
+/* GENERATOR */
+textarea {
+  width:90%;
+  height:120px;
+  margin-top:10px;
+  border-radius:10px;
+  padding:10px;
+}
+
+.output {
+  background:#111;
+  margin-top:20px;
+  padding:20px;
+  border-radius:10px;
+  white-space:pre-wrap;
+}
+
+/* CHAT */
+.chatbox {
+  position:fixed;
+  bottom:90px;
+  right:20px;
+  width:260px;
+  background:#111;
+  padding:10px;
+  border-radius:10px;
+  display:none;
+}
+
+.chatbox input {
+  width:100%;
+  padding:8px;
+}
+
+.chatbox button {
+  width:100%;
+  margin-top:5px;
+  background:#00c3ff;
+  border:none;
+  padding:8px;
+}
+
+/* FLOAT BUTTONS */
+.ai-btn {
+  position:fixed;
+  bottom:20px;
+  right:80px;
+  background:#00c3ff;
+  padding:15px;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+.whatsapp {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  padding:15px;
+  border-radius:50%;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<h1>Innowave AI</h1>
+</nav>
+
+<div class="hero">
+<h2>Build Websites with AI 🚀</h2>
+<p>Generate, design and launch instantly</p>
+
+<a href="https://wa.me/260962338363" class="btn">Start Now</a>
+</div>
+
+<!-- AI GENERATOR -->
+<section>
+<h2>AI Website Generator</h2>
+
+<textarea id="prompt" placeholder="e.g. Create a bakery website"></textarea>
+<br>
+<button class="btn" onclick="generate()">Generate Website</button>
+
+<div class="output" id="output"></div>
+</section>
+
+<!-- CONTACT -->
+<section>
+<h2>Contact</h2>
+<p>WhatsApp: +260962338363</p>
+</section>
+
+<!-- CHAT BUTTON -->
+<div class="ai-btn" onclick="toggleChat()">🤖</div>
+
+<div class="chatbox" id="chatbox">
+<div id="messages"></div>
+<input id="input" placeholder="Ask something...">
+<button onclick="chat()">Send</button>
+</div>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/260962338363" class="whatsapp">💬</a>
+
+<script>
+
+/* CHAT */
+function toggleChat(){
+ let box=document.getElementById("chatbox");
+ box.style.display = box.style.display==="block"?"none":"block";
+}
+
+function chat(){
+ let input=document.getElementById("input").value;
+ let messages=document.getElementById("messages");
+
+ if(!input) return;
+
+ messages.innerHTML += "<p>You: "+input+"</p>";
+
+ let reply="I help build websites 🚀";
+
+ if(input.includes("price")){
+   reply="Websites start from $50";
+ }
+ if(input.includes("contact")){
+   reply="WhatsApp: +260962338363";
+ }
+
+ messages.innerHTML += "<p>AI: "+reply+"</p>";
+ document.getElementById("input").value="";
+}
+
+/* GENERATOR */
+function generate(){
+ let prompt=document.getElementById("prompt").value;
+
+ let code = `
+<!DOCTYPE html>
+<html>
+<head><title>${prompt}</title></head>
+<body>
+<h1>${prompt}</h1>
+<p>This is your AI generated website.</p>
+</body>
+</html>
+`;
+
+ document.getElementById("output").textContent=code;
+}
+
+</script>
+
+</body>
+</html>
